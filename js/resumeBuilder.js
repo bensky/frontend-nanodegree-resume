@@ -39,9 +39,9 @@ $("#topContacts").append(formattedGitHub);
 $("#topContacts").append(formattedLocation);
 
 
-$("#main").prepend(formattedPic);
-$("#main").prepend(formattedWelcome);
-$("#main").prepend(formattedSkills);
+$("#header").append(formattedPic);
+$("#header").append(formattedWelcome);
+$("#header").append(formattedSkills);
 
 
 
