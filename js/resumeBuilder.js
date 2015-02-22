@@ -34,7 +34,7 @@ var work = {
 
 
 var bio = {
-	"name" : "Benjamin H. Krokosky",
+	"name" : "Benjamin Krokosky",
 	"role" : "Software Manager",
 	"contact_info" : {
 		"mobile" : "412-445-0711",
@@ -125,20 +125,38 @@ if(bio.skills.length > 0) {
 	}
 }
 
-for(job in work.jobs) {
-	$("#workExperience").append(HTMLworkStart);
-	var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
-	var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
-	var formattedLocation = HTMLworkLocation.replace("%data%", work.jobs[job].location);
-	var formattedDates = HTMLworkDates.replace("%data%", work.jobs[job].dates);
-	var formattedDesc = HTMLworkDescription.replace("%data%", work.jobs[job].description);
-	$(".work-entry:last").append(formattedEmployer+formattedTitle);
-	$(".work-entry:last").append(formattedLocation);
-	$(".work-entry:last").append(formattedDates);
-	$(".work-entry:last").append(formattedDesc);
+displayWork();
 
+$(document).click(function(loc) {
+	logClicks(loc.pageX,loc.pageY);
+});
 
+function displayWork () {
+	for(job in work.jobs) {
+		$("#workExperience").append(HTMLworkStart);
+		var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
+		var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
+		var formattedLocation = HTMLworkLocation.replace("%data%", work.jobs[job].location);
+		var formattedDates = HTMLworkDates.replace("%data%", work.jobs[job].dates);
+		var formattedDesc = HTMLworkDescription.replace("%data%", work.jobs[job].description);
+		$(".work-entry:last").append(formattedEmployer+formattedTitle);
+		$(".work-entry:last").append(formattedLocation);
+		$(".work-entry:last").append(formattedDates);
+		$(".work-entry:last").append(formattedDesc);
+	}
 }
+
+function inName(oldName) {
+    var finalName = oldName;
+    var names = oldName.split(" ");
+    var firstInit = oldName[0].toUpperCase();
+   
+	finalName = names[0].toLowerCase() + " " + names[1].toUpperCase() + " ";
+	finalName = firstInit + finalName.slice(1,-1);
+
+	return finalName;
+};
+
 
 var formattedName = HTMLheaderName.replace("%data%", bio.name);
 var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
@@ -171,6 +189,6 @@ $("#header").append(formattedWelcome);
 $("#header").append(formattedSkills);
 
 $("#education").append(formattedSchoolName);
-
+$("#main").append(internationalizeButton);
 
 
