@@ -1,3 +1,126 @@
+var bio = {
+	"name" : "Benjamin Krokosky",
+	"role" : "Software Manager",
+	"contact_info" : {
+		"mobile" : "412-445-0711",
+		"email" : "ben@krokosky.com",
+		"github" : "bensky",		
+		"twitter" : "@benkrokosky",
+		"location" : "Pittsburgh, PA"
+	},
+	"welcome_message" : "Welcome to my interactive resume",
+	"skills" : ["C","C++", "Embedded Programming", "Java", "HTML", "Javascript", "Management"],	
+	"pic_URL" : "https://yt3.ggpht.com/-4stmkIg4g9I/AAAAAAAAAAI/AAAAAAAAAAA/KQHXanuFIXo/s100-c-k-no/photo.jpg",
+	display: function() {
+		var formattedName = HTMLheaderName.replace("%data%", bio.name);
+		var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
+		var formattedMobile = HTMLmobile.replace("%data%", bio.contact_info.mobile);
+		var formattedEmail = HTMLemail.replace("%data%", bio.contact_info.email);
+		var formattedTwitter = HTMLtwitter.replace("%data%", bio.contact_info.twitter);
+		var formattedGitHub = HTMLgithub.replace("%data%", bio.contact_info.github);
+		var formattedLocation = HTMLlocation.replace("%data%", bio.contact_info.location);
+		var formattedPic = HTMLbioPic.replace("%data%",bio.pic_URL);
+		var formattedWelcome = HTMLWelcomeMsg.replace("%data%",bio.welcome_message);
+		var formattedSkills = HTMLskills.replace("%data%",bio.skills);
+
+		$("#topContacts").append(formattedMobile);
+		$("#topContacts").append(formattedEmail);
+		$("#topContacts").append(formattedTwitter);
+		$("#topContacts").append(formattedGitHub);
+		$("#topContacts").append(formattedLocation);
+
+		$("#header").prepend(formattedRole);
+		$("#header").prepend(formattedName);
+		$("#header").append(formattedWelcome);
+		$("#header").append(formattedPic);
+
+		if(bio.skills.length > 0) {
+			$("#header").append(HTMLskillsStart);
+			var total_skills = 0;
+			while(total_skills < bio.skills.length) {
+				var formattedSkill = HTMLskills.replace("%data%", bio.skills[total_skills]);
+				$("#skills").append(formattedSkill);
+				total_skills++;
+			}
+		}
+	}
+};
+
+
+var education = {
+	"schools" : [
+		{
+			"name": "Carnegie Mellon - Tepper",
+			"location": "Pittsburgh, PA",			
+			"degree": "MBA",
+			"dates" : "1987",	
+			"major": ["Marketing"]
+		},
+		{
+			"name": "Carnegie Mellon",
+			"location": "Pittsburgh, PA",
+			"degree": "BS",
+			"dates": "1998",
+			"major": ["Electrical Engineering"]
+		}
+	],
+	"onlineCourses": [
+		{
+			"title": "Javascript Basics",
+			"school": "Udacity",
+			"dates": 2015,
+			"url": "http://www.udacity.com"
+		},
+		{
+			"title": "Introduction to HTML and CSS",
+			"school": "Udacity",
+			"dates": 2015,
+			"url": "http://www.udacity.com"
+		},
+		{
+			"title": "Introduction to Databases",
+			"school": "Stanford",
+			"dates": 2013,
+			"url": "https://class.stanford.edu/courses/Home/Databases/"
+		},
+		{
+			"title": "Foundations of Computer Graphics",
+			"school": "BerkleyX",
+			"dates": 2012,
+			"url": "https://www.edx.org/school/uc-berkeleyx"
+		}
+	],
+	display: function() {	
+		for(school in education.schools) {
+			$("#education").append(HTMLschoolStart);
+			var formattedSchool = HTMLschoolName.replace("%data%", education.schools[school].name);
+			var formattedDegree = HTMLschoolDegree.replace("%data%", education.schools[school].degree);
+			var formattedDates = HTMLschoolDates.replace("%data%", education.schools[school].dates);
+			var formattedLocation = HTMLschoolLocation.replace("%data%", education.schools[school].location);
+			var formattedMajor = HTMLschoolMajor.replace("%data%", education.schools[school].major);
+			$(".education-entry:last").append(formattedSchool+formattedDegree);
+			$(".education-entry:last").append(formattedDates);
+			$(".education-entry:last").append(formattedLocation);
+			$(".education-entry:last").append(formattedMajor);
+		}
+			
+		$(".education-entry:last").append(HTMLonlineClasses);
+
+		for(course in education.onlineCourses) {
+			$("#education").append(HTMLschoolStart);
+			var formattedTitle = HTMLonlineTitle.replace("%data%", education.onlineCourses[course].title);
+			var formattedSchool =  HTMLonlineSchool.replace("%data%", education.onlineCourses[course].school);
+			var formattedDates = HTMLonlineDates.replace("%data%", education.onlineCourses[course].dates);
+			var formattedURL = HTMLonlineURL.replace("%data%", education.onlineCourses[course].url);
+			$(".education-entry:last").append(formattedTitle+formattedSchool);
+			$(".education-entry:last").append(formattedDates);
+			$(".education-entry:last").append(formattedLocation);
+			$(".education-entry:last").append(formattedURL);
+		}
+	}	
+};
+
+
 var work = {
 	"jobs" : [
 		{
@@ -28,24 +151,21 @@ var work = {
 			"dates": "August 1988  - August 1995",
 			"description": "* Developed software using C and C++ to implement new standard features on the Compunetix Contex conferencing bridge.<br>	* Acquired necessary governmental approvals for Compunetix equipment for sale in Australia, Switzerland and Italy.<br>	* Supervised the wiring plan, equipment selection, and coordination with service providers for the establishment of Compunetix' conference call service.<br>	* Supervised the installation and wrote custom software for many conference bridge installations, for both commercial and government customers.<br>	* Designed and conducted maintenance and theory of operation training courses for Compunetix customers. <br>	* Designed Compunetix hardware including switch cards and master clock modules.ractices and procedures needed to move Compunetix to CMM Level 2."
 		}	
-	]
-};
-
-
-
-var bio = {
-	"name" : "Benjamin Krokosky",
-	"role" : "Software Manager",
-	"contact_info" : {
-		"mobile" : "412-445-0711",
-		"email" : "ben@krokosky.com",
-		"twitter" : "@benkrokosky",
-		"github" : "bensky",
-		"location" : "Pittsburgh, PA"
-	},
-	"pic_URL" : "https://yt3.ggpht.com/-4stmkIg4g9I/AAAAAAAAAAI/AAAAAAAAAAA/KQHXanuFIXo/s100-c-k-no/photo.jpg",
-	"welcome_message" : "Welcome to my interactive resume",
-	"skills" : ["C","C++", "Java", "HTML", "JS", "Management"]
+	],
+	display: function() {
+		for(job in work.jobs) {
+			$("#workExperience").append(HTMLworkStart);
+			var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
+			var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
+			var formattedLocation = HTMLworkLocation.replace("%data%", work.jobs[job].location);
+			var formattedDates = HTMLworkDates.replace("%data%", work.jobs[job].dates);
+			var formattedDesc = HTMLworkDescription.replace("%data%", work.jobs[job].description);
+			$(".work-entry:last").append(formattedEmployer+formattedTitle);
+			$(".work-entry:last").append(formattedLocation);
+			$(".work-entry:last").append(formattedDates);
+			$(".work-entry:last").append(formattedDesc);
+		}
+	}
 };
 
 
@@ -69,111 +189,24 @@ var projects = {
 			"description": "Create plugin anda dapt Presenter collaboration project to allow sharing to be initaited from within a browser. Did overall project definition, technology selection and project management.",
 			"images": []
 		}
-	]
-};
-
-
-var education = {
-	"schools" : [
-		{
-			"name": "Carnegie Mellon - Tepper",
-			"dates" : "1987",
-			"location": "Pittsburgh, PA",
-			"degree": "MBA",
-			"major": ["Marketing"]
-		},
-		{
-			"name": "Carnegie Mellon",
-			"dates": "1998",
-			"location": "Pittsburgh, PA",
-			"degree": "BS",
-			"major": ["Electrical Engineering"]
-		}
 	],
-	"onlineCourses": [
-		{
-			"title": "Javascript Basics",
-			"school": "Udacity",
-			"dates": 2015,
-			"url": "http://www.udacity.com"
-		},
-		{
-			"title": "Introduction to HTML and CSS",
-			"school": "Udacity",
-			"dates": 2015,
-			"url": "http://www.udacity.com"
-		},
-		{
-			"title": "Introduction to Databases",
-			"school": "Stanford",
-			"dates": 2013,
-			"url": "https://class.stanford.edu/courses/Home/Databases/"
-		},
-		{
-			"title": "Foundations of Computer Graphics",
-			"school": "BerkleyX",
-			"dates": 2012,
-			"url": "https://www.edx.org/school/uc-berkeleyx"
+	display: function() {
+		for(prj in projects.projects) {
+			$("#projects").append(HTMLprojectStart);
+			var formattedTitle = HTMLprojectTitle.replace("%data%", projects.projects[prj].title);
+			var formattedDates = HTMLprojectDates.replace("%data%", projects.projects[prj].dates);
+			var formattedDesc = HTMLprojectDescription.replace("%data%", projects.projects[prj].description);
+			$(".project-entry:last").append(formattedTitle);
+			$(".project-entry:last").append(formattedDates);
+			$(".project-entry:last").append(formattedDesc);
 		}		
-	]
+	}
 };
 
-projects.display = function() {
-		for(prj in projects.projects) {
-		$("#projects").append(HTMLprojectStart);
-		var formattedTitle = HTMLprojectTitle.replace("%data%", projects.projects[prj].title);
-		var formattedDates = HTMLprojectDates.replace("%data%", projects.projects[prj].dates);
-		var formattedDesc = HTMLprojectDescription.replace("%data%", projects.projects[prj].description);
-		$(".project-entry:last").append(formattedTitle);
-		$(".project-entry:last").append(formattedDates);
-		$(".project-entry:last").append(formattedDesc);
-	}
-}
 
-work.display = function() {
-	for(job in work.jobs) {
-		$("#workExperience").append(HTMLworkStart);
-		var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
-		var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
-		var formattedLocation = HTMLworkLocation.replace("%data%", work.jobs[job].location);
-		var formattedDates = HTMLworkDates.replace("%data%", work.jobs[job].dates);
-		var formattedDesc = HTMLworkDescription.replace("%data%", work.jobs[job].description);
-		$(".work-entry:last").append(formattedEmployer+formattedTitle);
-		$(".work-entry:last").append(formattedLocation);
-		$(".work-entry:last").append(formattedDates);
-		$(".work-entry:last").append(formattedDesc);
-	}
-}
 
-education.display = function() {
-	for(school in education.schools) {
-		$("#education").append(HTMLschoolStart);
-		var formattedSchool = HTMLschoolName.replace("%data%", education.schools[school].name);
-		var formattedDegree = HTMLschoolDegree.replace("%data%", education.schools[school].degree);
-		var formattedDates = HTMLschoolDates.replace("%data%", education.schools[school].dates);
-		var formattedLocation = HTMLschoolLocation.replace("%data%", education.schools[school].location);
-		var formattedMajor = HTMLschoolMajor.replace("%data%", education.schools[school].major);
-		$(".education-entry:last").append(formattedSchool+formattedDegree);
-		$(".education-entry:last").append(formattedDates);
-		$(".education-entry:last").append(formattedLocation);
-		$(".education-entry:last").append(formattedMajor);
-	}
-	
-	$(".education-entry:last").append(HTMLonlineClasses);
 
-	for(course in education.onlineCourses) {
-		$("#education").append(HTMLschoolStart);
-		var formattedTitle = HTMLonlineTitle.replace("%data%", education.onlineCourses[course].title);
-		var formattedSchool =  HTMLonlineSchool.replace("%data%", education.onlineCourses[course].school);
-		var formattedDates = HTMLonlineDates.replace("%data%", education.onlineCourses[course].dates);
-		var formattedURL = HTMLonlineURL.replace("%data%", education.onlineCourses[course].url);
-		$(".education-entry:last").append(formattedTitle+formattedSchool);
-		$(".education-entry:last").append(formattedDates);
-		$(".education-entry:last").append(formattedLocation);
-		$(".education-entry:last").append(formattedURL);
-	}
-}
-
+bio.display();
 work.display();
 projects.display();
 education.display();
@@ -197,42 +230,6 @@ function inName(oldName) {
 };
 
 
-var formattedName = HTMLheaderName.replace("%data%", bio.name);
-var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
-
-var formattedMobile = HTMLmobile.replace("%data%", bio.contact_info.mobile);
-var formattedEmail = HTMLemail.replace("%data%", bio.contact_info.email);
-var formattedTwitter = HTMLtwitter.replace("%data%", bio.contact_info.twitter);
-var formattedGitHub = HTMLgithub.replace("%data%", bio.contact_info.github);
-var formattedLocation = HTMLlocation.replace("%data%", bio.contact_info.location);
-
-
-var formattedPic = HTMLbioPic.replace("%data%",bio.pic_URL);
-var formattedWelcome = HTMLWelcomeMsg.replace("%data%",bio.welcome_message);
-var formattedSkills = HTMLskills.replace("%data%",bio.skills);
-
-
-
-$("#topContacts").append(formattedMobile);
-$("#topContacts").append(formattedEmail);
-$("#topContacts").append(formattedTwitter);
-$("#topContacts").append(formattedGitHub);
-$("#topContacts").append(formattedLocation);
-
-$("#header").prepend(formattedRole);
-$("#header").prepend(formattedName);
-
-$("#header").append(formattedWelcome);
-$("#header").append(formattedPic);
-if(bio.skills.length > 0) {
-	$("#header").append(HTMLskillsStart);
-	var total_skills = 0;
-	while(total_skills < bio.skills.length) {
-		var formattedSkill = HTMLskills.replace("%data%", bio.skills[total_skills]);
-		$("#skills").append(formattedSkill);
-		total_skills++;
-	}
-}
 
 
 $("#main").append(internationalizeButton);
