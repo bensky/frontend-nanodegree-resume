@@ -9,6 +9,8 @@ I can't wait to see the resumes you put together!
 Cameron Pittman, Udacity Course Developer
 -->
 
+<!-- Sidebars courtesy http://plugins.adchsm.me/slidebars/usage.php -->
+
 <!--
 The <head> of a website generally links to important resources the page will
 need to load. You'll see a lot of <link>s to CSS files for styles and
@@ -19,9 +21,11 @@ need to load. You'll see a lot of <link>s to CSS files for styles and
   <meta charset="utf-8">
 
   <!-- Tells the browser what the title of this page should be. -->
-  <title>Resume</title>
+  <title>Resume - Benjamin Krokosky</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
 
   <!-- Load the page styles. -->
+  <link rel="stylesheet" href="css/slidebars.css" >
   <link href="css/style.css" rel="stylesheet" type="text/css">
 
   <!--
@@ -41,6 +45,7 @@ need to load. You'll see a lot of <link>s to CSS files for styles and
 
   <!-- More on helper.js in the class -->
   <script src="js/helper.js"></script>
+  <script src="js/slidebars.js"></script>  
 
   <!--
   Uncomment the <script> tag below when you're ready to add an interactive
@@ -51,7 +56,9 @@ need to load. You'll see a lot of <link>s to CSS files for styles and
   <meta name="viewport" content="width=device-width">
 </head>
 <body unresolved>
+    <div id="sb-site">
   <div id="main">
+            <h3 class="sb-toggle-left">Navigation Menu</h3>
         <!--
     Everything from here to the <script> tag below is the skeleton of your
     website. Your code will add information to each of the sections of the
@@ -60,18 +67,23 @@ need to load. You'll see a lot of <link>s to CSS files for styles and
     -->
     <div id="header" class="center-content clearfix">
       <ul id="topContacts" class='flex-box'></ul>
+      <a name = "Bio"></a>      
     </div>
     <div style='clear: both;'></div>
     <div id="workExperience" class='gray'>
+      <a name = "Experience"></a>
       <h2>Work Experience</h2>
     </div>
     <div id="projects">
+      <a name = "Projects"></a>      
       <h2>Projects</h2>
     </div>
     <div id="education" class='gray'>
+      <a name = "Education"></a>      
       <h2>Education</h2>
     </div>
     <div id="mapDiv">
+      <a name = "Map"></a>      
       <h2>Where I've Lived and Worked</h2>
     </div>
     <div id="letsConnect" class='dark-gray'>
@@ -80,7 +92,28 @@ need to load. You'll see a lot of <link>s to CSS files for styles and
       </ul>
     </div>
   </div>
+</div>
 
+
+    <div class="sb-slidebar sb-left">
+      <!-- Your left Slidebar content. -->
+     <nav> 
+    <ul class="sb-menu">
+      <li><img src="http://plugins.adchsm.me/slidebars/images/slidebars-logo-white@2x.png" alt="Slidebars" width="118" height="40"></li>
+      <li class="sb-close"><a href="#Bio">Contact Me</a></li>
+      <li class="sb-close"><a href="#Experience">Work Experience</a></li>
+      <li class="sb-close"><a href="#Projects">Projects</a></li>
+      <li class="sb-close"><a href="#Education">Education</a></li>
+      <li class="sb-close"><a href="#Map">Life Map</a></li>
+
+    </ul>
+  </nav>
+
+    </div>
+
+    <div class="sb-slidebar sb-right">
+      <!-- Your right Slidebar content. -->
+    </div>
   <!--
   The next line tells the browser where to download the JavaScript file you'll be
   writing. In resumeBuilder.js, you'll be writing code that builds the resume
@@ -134,5 +167,15 @@ need to load. You'll see a lot of <link>s to CSS files for styles and
       document.getElementById('mapDiv').style.backgroundColor = "black";
     }
   </script>
+
+<script>
+  (function($) {
+    $(document).ready(function() {
+      $.slidebars({
+      });
+    });
+  }) (jQuery);
+</script>
+
 </body>
 </html>
