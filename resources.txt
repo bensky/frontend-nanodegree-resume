@@ -1,0 +1,9 @@
+Project 2
+Benjamin Krokosky
+
+Resources Used:
+Udacity: www.udacity.com
+Bootstrap: www.getbootstrap.com
+W3C:www.w3.org
+W3Schools: www.w3schools.com
+Sidebars: http://plugins.adchsm.me/slidebars/usage.php 
