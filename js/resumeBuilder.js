@@ -43,6 +43,12 @@ var bio = {
 				total_skills++;
 			}
 		}
+
+		$("#footerContacts").append(formattedMobile);
+		$("#footerContacts").append(formattedEmail);
+		$("#footerContacts").append(formattedTwitter);
+		$("#footerContacts").append(formattedGitHub);
+		$("#footerContacts").append(formattedLocation);		
 	}
 };
 
@@ -53,14 +59,14 @@ var education = {
 			"name": "Carnegie Mellon - Tepper",
 			"location": "Pittsburgh, PA",			
 			"degree": "MBA",
-			"dates" : "1987",	
+			"dates" : "1998",	
 			"major": ["Marketing"]
 		},
 		{
 			"name": "Carnegie Mellon",
 			"location": "Pittsburgh, PA",
 			"degree": "BS",
-			"dates": "1998",
+			"dates": "1987",
 			"major": ["Electrical Engineering"]
 		}
 	],
@@ -186,7 +192,7 @@ var projects = {
 		{
 			"title": "Presenter Web Based Sharing Client",
 			"dates": "2013-2014",
-			"description": "Create plugin anda dapt Presenter collaboration project to allow sharing to be initaited from within a browser. Did overall project definition, technology selection and project management.",
+			"description": "Create plugin and adapt Presenter collaboration project to allow sharing to be initiated from within a browser. Did overall project definition, technology selection and project management.",
 			"images": []
 		}
 	],
