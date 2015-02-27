@@ -23,23 +23,23 @@ var bio = {
 		var formattedWelcome = HTMLWelcomeMsg.replace("%data%",bio.welcome_message);
 		var formattedSkills = HTMLskills.replace("%data%",bio.skills);
 
-		$("#topContacts").append(formattedMobile);
-		$("#topContacts").append(formattedEmail);
-		$("#topContacts").append(formattedTwitter);
-		$("#topContacts").append(formattedGitHub);
-		$("#topContacts").append(formattedLocation);
+		$("#topCol2").append(formattedMobile);
+		$("#topCol2").append(formattedEmail);
+		$("#topCol2").append(formattedTwitter);
+		$("#topCol2").append(formattedGitHub);
+		$("#topCol2").append(formattedLocation);
 
 		$("#header").prepend(formattedRole);
 		$("#header").prepend(formattedName);
-		$("#header").append(formattedWelcome);
-		$("#header").append(formattedPic);
+		$("#topCol2").prepend(formattedWelcome);
+		$("#topCol1").append(formattedPic);
 
 		if(bio.skills.length > 0) {
-			$("#header").append(HTMLskillsStart);
+			$("#topCol3").append(HTMLskillsStart);
 			var total_skills = 0;
 			while(total_skills < bio.skills.length) {
 				var formattedSkill = HTMLskills.replace("%data%", bio.skills[total_skills]);
-				$("#skills").append(formattedSkill);
+				$("#topCol3").append(formattedSkill);
 				total_skills++;
 			}
 		}

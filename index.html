@@ -25,7 +25,8 @@ need to load. You'll see a lot of <link>s to CSS files for styles and
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
 
   <!-- Load the page styles. -->
-  <link rel="stylesheet" href="css/slidebars.css" >
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="css/slidebars.css">
   <link href="css/style.css" rel="stylesheet" type="text/css">
 
   <!--
@@ -66,6 +67,11 @@ need to load. You'll see a lot of <link>s to CSS files for styles and
     display by looking at the id or at what's written between the <h2> tags.
     -->
     <div id="header" class="center-content clearfix">
+      <div class="row"> 
+        <div class="col-md-2" id="topCol1"></div>
+        <div class="col-md-5" id="topCol2"></div>
+        <div class="col-md-5" id="topCol3"></div>        
+      </div>
       <ul id="topContacts" class='flex-box'></ul>
       <a name = "Bio"></a>      
     </div>
